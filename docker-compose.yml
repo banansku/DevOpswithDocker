@@ -1,0 +1,13 @@
+services:
+  express-app:
+    image: dockeradmmm/devops2025pipeline:latest
+    ports:
+      - "8080:8080"
+
+  watchtower1:
+    image: containrrr/watchtower
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=60
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: express-app
